@@ -14,7 +14,9 @@ class Dog:
 
 
     def have_birthday(self):
-        self.age += 1
+        age = int(self.age)
+        age += 1
+        self.age = age
         print(f"\n{self.name} is now {self.age} years old! Happy Birthday!")
 
     def bark(self):
@@ -131,7 +133,8 @@ def menu(my_dog):
         print("3. Sleep")
         print("4. Eat")
         print("5. Play")
-        print("6. Save and quit")
+        print("6. Have Birthday")
+        print("7. Save and quit")
         print("<------------->")
         choice = input("Choose an option: ")
         if choice == "1":
@@ -168,6 +171,8 @@ def menu(my_dog):
                 print(content)
             my_dog.play()
         elif choice == "6":
+            my_dog.have_birthday()
+        elif choice == "7":
             my_dog.save_to_file()
             print("Goodbye.")
             time.sleep(3)
