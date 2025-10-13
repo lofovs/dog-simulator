@@ -37,11 +37,11 @@ class Dog:
 
 
     def eat(self):
-     if self.is_hungry or self.energy <= 75:  # Check BOTH conditions
+     if self.is_hungry or self.energy <= 75:
         self.energy += 25
-        if self.energy > 100:  # Prevent going over 100
+        if self.energy > 100: 
             self.energy = 100
-        self.is_hungry = False  # Reset hunger
+        self.is_hungry = False
         print(f"\n{self.name} ate a meal and restored 25 energy!")
      else:
         print(f"\n{self.name} is too full to eat right now.")
@@ -105,10 +105,8 @@ class Dog:
         print(f"{self.name}'s data has been saved to saves/{self.name}_data.json!")
 
 def clear_screen():
-    # For Windows
     if os.name == 'nt':
         os.system('cls')
-    # For Mac/Linux
     else:
         os.system('clear')
 
@@ -176,16 +174,13 @@ def startup_menu():
         
         choice = input("Choose: ")
         
-        # Handle the choice
         if choice.isdigit():
             choice_num = int(choice)
             if 1 <= choice_num <= len(dog_names):
-                # Load existing dog
                 selected_name = dog_names[choice_num - 1]
                 return Dog.load_from_file(f"saves/{selected_name}_data.json")
                 
             elif choice_num == len(dog_names) + 1:
-                # Create new dog
                 name = input("Name: ")
                 breed = input("Breed: ")
                 age = int(input("Age: "))
