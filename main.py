@@ -29,6 +29,16 @@ class Dog:
         print(f"Goodbye {self.name}!")
         exit()
 
+    def kick(self):
+        print(f"\nYou kicked {self.name}. That's not nice!")
+        if self.energy >= 20:
+            self.energy -= 20
+            print(f"{self.name} is hurt and now has {self.energy} energy left.")
+            if self.energy <= 50:
+                self.is_hungry = True
+        else:
+            print(f"{self.name} is too tired to react.")
+
 
     def bark(self):
         if self.energy >= 10:
@@ -152,9 +162,10 @@ def menu(my_dog):
         print("3. Sleep")
         print("4. Eat")
         print("5. Play")
-        print("6. Have Birthday")
-        print("7. Kill Dog")
-        print("8. Save and quit")
+        print("6. Kick Dog")
+        print("7. Have Birthday")
+        print("8. Kill Dog")
+        print("9. Save and quit")
         print("<------------->")
         choice = input("Choose an option: ")
         if choice == "1":
@@ -191,14 +202,16 @@ def menu(my_dog):
                 print(content)
             my_dog.play()
         elif choice == "6":
-            my_dog.have_birthday()
+            my_dog.kick()
         elif choice == "7":
+            my_dog.have_birthday()
+        elif choice == "8":
             confirm = input(f"Are you sure you want to kill {my_dog.name}? This action cannot be undone. (yes/no): ")
             if confirm.lower() == 'yes' or confirm.lower() == 'y':
                 my_dog.kill()
             else:
                 print(f"{my_dog.name} is safe for now.")
-        elif choice == "8":
+        elif choice == "9":
             my_dog.save_to_file()
             print("Goodbye.")
             time.sleep(3)
