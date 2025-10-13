@@ -246,7 +246,13 @@ def startup_menu():
                 return Dog.load_from_file(f"saves/{selected_name}_data.json")
                 
             elif choice_num == len(dog_names) + 1:
-                name = input("Name: ")
+                print("Creating a new dog...")
+                while True: 
+                    name = input("Name: ")
+                    if name in dog_names:
+                        print("A dog with that name already exists. Please choose a different name.")
+                        continue
+                    break
                 breed = input("Breed: ")
                 age = int(input("Age: "))
                 return Dog(name, breed, age)
