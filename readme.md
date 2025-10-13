@@ -26,3 +26,12 @@ A Python-based virtual pet simulator where you care for your own digital dog! Ma
 ## ❓ Why did I make this?
 
 In order to continue learning python I had to tackle classes head on. In my game you'll find a main class "Dog" with different methods which makes the dog do actions. Making a menu is a piece of cake but handling classes and methods like this is new to me and I found it as a good way to learn.
+
+## 🏆 Coming soon:
+
+| Feature | Description |
+|---------|-------------|
+| 🐕‍🦺 **Passive Energy Drain** | Instead of the dog having set amount of energy all the time, he will auto lose energy after x amount of minutes |
+| 💾 **Realistic Sleep Mechanics** | Sleeping wont be instant, it will actually take time. |
+| 📱 **Progression System** | Ranking system and XP system |
+| 🎯 **Secure Saving** | Instead of cleartext json saves, obfuscate it so it can't be altered |
