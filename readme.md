@@ -22,16 +22,24 @@ A Python-based virtual pet simulator where you care for your own digital dog! Ma
 | 📱 **Clean Menu** | Easy-to-use terminal interface |
 | 🎯 **Multiple Dogs** | Create and switch between pets |
 | ⚡ **Real-time Stats** | Live energy and hunger tracking |
+| 🎉 **Fun Interactions** | Play, feed, train, and more! |
 
 ## ❓ Why did I make this?
 
 In order to continue learning python I had to tackle classes head on. In my game you'll find a main class "Dog" with different methods which makes the dog do actions. Making a menu is a piece of cake but handling classes and methods like this is new to me and I found it as a good way to learn.
 
+## 🆕 New Features 
+| Feature | Description |
+|---------|-------------|
+| 💤 **Enhanced Sleep Method** | Added visual feedback and awakening message when the dog sleeps
+| 🥳 **Birthday Celebration** | Added a birthday feature that increases the dog's age and happiness |
+| 🦶 **Kick Action** | Introduced a kick action that decreases the dog's happiness and energy |
+| 🐶 **Unique Dog Names** | Ensured that each dog has a unique name when creating a new pet |
+| 💀 **Dog Mortality** | You can kill your dog now. Why would you do that? Not my concern, but at least you have the option! |
+
 ## 🏆 Coming soon:
 
 | Feature | Description |
 |---------|-------------|
-| 🐕‍🦺 **Passive Energy Drain** | Instead of the dog having set amount of energy all the time, he will auto lose energy after x amount of minutes |
-| 💾 **Realistic Sleep Mechanics** | Sleeping wont be instant, it will actually take time. |
-| 📱 **Progression System** | Ranking system and XP system |
+| 🐕‍🦺 **Passive Energy Drain** | Instead of the dog having set amount of energy all the time, it will auto lose energy after x amount of minutes |
 | 🎯 **Secure Saving** | Instead of cleartext json saves, obfuscate it so it can't be altered |
