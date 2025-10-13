@@ -19,6 +19,17 @@ class Dog:
         self.age = age
         print(f"\n{self.name} is now {self.age} years old! Happy Birthday!")
 
+    def kill(self):
+        print(f"\n{self.name} has passed away... Goodbye, old friend.")
+        self.energy = 0
+        self.is_hungry = False
+
+        if os.path.exists(f"saves/{self.name}_data.json"):
+            Dog.delete_saved_file(f"saves/{self.name}_data.json")
+        print(f"Goodbye {self.name}!")
+        exit()
+
+
     def bark(self):
         if self.energy >= 10:
             self.energy -= 10
@@ -91,6 +102,14 @@ class Dog:
         print(f"{dog.name}'s data is loaded from {filename}")
         return dog
     
+    @classmethod
+    def delete_saved_file(cls, filename):
+        if os.path.exists(filename):
+            os.remove(filename)
+            print(f"Deleted saved file: {filename}")
+        else:
+            print(f"No saved file found to delete: {filename}")
+    
     def to_dict(self):
         return {
             "name": self.name,
@@ -134,7 +153,8 @@ def menu(my_dog):
         print("4. Eat")
         print("5. Play")
         print("6. Have Birthday")
-        print("7. Save and quit")
+        print("7. Kill Dog")
+        print("8. Save and quit")
         print("<------------->")
         choice = input("Choose an option: ")
         if choice == "1":
@@ -173,6 +193,12 @@ def menu(my_dog):
         elif choice == "6":
             my_dog.have_birthday()
         elif choice == "7":
+            confirm = input(f"Are you sure you want to kill {my_dog.name}? This action cannot be undone. (yes/no): ")
+            if confirm.lower() == 'yes' or confirm.lower() == 'y':
+                my_dog.kill()
+            else:
+                print(f"{my_dog.name} is safe for now.")
+        elif choice == "8":
             my_dog.save_to_file()
             print("Goodbye.")
             time.sleep(3)
