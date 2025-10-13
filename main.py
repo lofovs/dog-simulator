@@ -53,6 +53,11 @@ class Dog:
         if self.energy >= 50:
             print(f"\n{self.name} is too energetic to sleep!")
         else:
+            print(f"\n{self.name} is sleeping...")
+            time.sleep(3)
+            print("Zzzzz...")
+            time.sleep(2)
+            print(f"\n{self.name} has awakened!")
             old_energy = self.energy
             self.energy = 100
             self.is_hungry = False
