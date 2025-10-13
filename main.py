@@ -207,7 +207,6 @@ def startup_menu():
                 age = int(input("Age: "))
                 return Dog(name, breed, age)
             
-    menu(my_dog)
     print("Invalid choice!")
     return None
 
