@@ -29,13 +29,13 @@ A Python-based virtual pet simulator where you care for your own digital dog! Ma
 In order to continue learning python I had to tackle classes head on. In my game you'll find a main class "Dog" with different methods which makes the dog do actions. Making a menu is a piece of cake but handling classes and methods like this is new to me and I found it as a good way to learn.
 
 ## 🆕 New Features 
-| Feature | Description |
-|---------|-------------|
-| 💤 **Enhanced Sleep Method** | Added visual feedback and awakening message when the dog sleeps
-| 🥳 **Birthday Celebration** | Added a birthday feature that increases the dog's age and happiness |
-| 🦶 **Kick Action** | Introduced a kick action that decreases the dog's happiness and energy |
-| 🐶 **Unique Dog Names** | Ensured that each dog has a unique name when creating a new pet |
-| 💀 **Dog Mortality** | You can kill your dog now. Why would you do that? Not my concern, but at least you have the option! |
+| Feature | Description | Implemented |
+|---------|-------------| ------------|
+| 💤 **Enhanced Sleep Method** | Added visual feedback and awakening message when the dog sleeps | version 1.1 |
+| 🥳 **Birthday Celebration** | Added a birthday feature that increases the dog's age and happiness | version 1.1 |
+| 🦶 **Kick Action** | Introduced a kick action that decreases the dog's happiness and energy | version 1.1 |
+| 🐶 **Unique Dog Names** | Ensured that each dog has a unique name when creating a new pet | version 1.1 |
+| 💀 **Dog Mortality** | You can kill your dog now. Why would you do that? Not my concern, but at least you have the option! | version 1.1 |
 
 ## 🏆 Coming soon:
 
