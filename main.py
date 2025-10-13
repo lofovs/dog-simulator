@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 class Dog:
     def __init__(self, name, breed, age):
@@ -49,7 +50,7 @@ class Dog:
     def play(self):
         if self.energy >= 30 and self.is_hungry == False:
             self.energy -= 30
-            print(f"\n{self.name} is playing! and now has {self.energy} left.")
+            print(f"\n{self.name} is playing! and now has {self.energy} energy left.")
             if self.energy <= 50:
                 self.is_hungry = True
         else:
@@ -134,22 +135,42 @@ def menu(my_dog):
         print("<------------->")
         choice = input("Choose an option: ")
         if choice == "1":
+            with open('ascii/info.txt', 'r') as file:
+                content = file.read()
+                print(content)
             print(f"Name: {my_dog.name}")
             print(f"Breed: {my_dog.breed}")
             print(f"Age: {my_dog.age}")
             print(f"Energy: {my_dog.energy}")
             print(f"Hungry: {my_dog.is_hungry}")
         elif choice == "2":
+            clear_screen()
+            with open('ascii/bark.txt', 'r') as file:
+                content = file.read()
+                print(content)
             my_dog.bark()
         elif choice == "3":
+            clear_screen()
+            with open('ascii/sleep.txt', 'r') as file:
+                content = file.read()
+                print(content)
             my_dog.sleep()
         elif choice == "4":
+            clear_screen()
+            with open('ascii/eat.txt', 'r') as file:
+                content = file.read()
+                print(content)
             my_dog.eat()
         elif choice == "5":
+            clear_screen()
+            with open('ascii/play.txt', 'r') as file:
+                content = file.read()
+                print(content)
             my_dog.play()
         elif choice == "6":
             my_dog.save_to_file()
             print("Goodbye.")
+            time.sleep(3)
             break
         else:
             print("Invalid choice, try again.")
