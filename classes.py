@@ -10,6 +10,8 @@ class Dog:
         self.age = age
         self.energy = 100
         self.is_hungry = False
+        self.xp = 0
+        self.rank = "Puppy"
 
 
 
@@ -40,8 +42,11 @@ class Dog:
             print(f"{self.name} is hurt and now has {self.energy} energy left.")
             if self.energy <= 50:
                 self.is_hungry = True
+            self.xp += 5
+            return True
         else:
             print(f"{self.name} is too tired to react.")
+            return False
 
 
 
@@ -51,14 +56,18 @@ class Dog:
             print(f"\n{self.name} says Woof!, and has now {self.energy} energy left.")
             if self.energy <= 50:
                 self.is_hungry = True
+            self.xp += 10
+            return True
         else:
             print(f"\n{self.name} is too tired to bark.")
+            return False
 
 
 
     def sleep(self):
         if self.energy >= 50:
             print(f"\n{self.name} is too energetic to sleep!")
+            return False
         else:
             print(f"\n{self.name} is sleeping...")
             time.sleep(10)
@@ -78,6 +87,8 @@ class Dog:
             self.is_hungry = False
             print (f"\n{self.name} has slept and restores {100 - old_energy}!")
             print(f"\n{self.name} has now awaken and rested with {self.energy} energy!")
+            self.xp += 20
+            return True
 
 
 
@@ -89,9 +100,11 @@ class Dog:
             self.energy = 100
         self.is_hungry = False
         print(f"\n{self.name} ate a meal and restored 25 energy!")
+        self.xp += 10
+        return True
      else:
         print(f"\n{self.name} is too full to eat right now.")
-
+        return False
 
 
     def play(self):
@@ -100,11 +113,15 @@ class Dog:
             print(f"\n{self.name} is playing! and now has {self.energy} energy left.")
             if self.energy <= 50:
                 self.is_hungry = True
+            self.xp += 15
+            return True
         else:
             if self.energy <= 30:
                 print(f"\n{self.name} is too tired to play...")
+                return False
             elif self.is_hungry:
                 print(f"\n{self.name} is too hungry to play.")
+                return False
 
 
 
@@ -137,6 +154,8 @@ class Dog:
         )
         dog.energy = data["energy"]
         dog.is_hungry = data["is_hungry"]
+        dog.xp = data["xp"]
+        dog.rank = data["rank"]
         print(f"{dog.name}'s data is loaded from {filename}")
         return dog
     
@@ -156,7 +175,9 @@ class Dog:
             "breed": self.breed,
             "age": self.age,
             "energy": self.energy,
-            "is_hungry": self.is_hungry
+            "is_hungry": self.is_hungry,
+            "xp": self.xp,
+            "rank": self.rank
         }
     
     def save_to_file(self):
@@ -174,6 +195,12 @@ class Dog:
 class GameManager:
     def __init__(self):
         self.last_drain_time = time.time()
+        self.rank_thresholds = {
+            "Puppy": 0,
+            "Good Dog": 150,
+            "Senior Dog": 400,
+            "Grand Master": 1000
+        }
 
 
     def check_passive_drain(self, dog):
@@ -194,3 +221,14 @@ class GameManager:
                 dog.is_hungry = True
         
         self.last_drain_time = current_time
+
+    def check_rank_up(self, dog):
+        old_rank = dog.rank
+        for rank_name, min_xp in sorted(self.rank_thresholds.items(), key= lambda x: x[1], reverse= True):
+            if dog.xp >= min_xp:
+                dog.rank = rank_name
+                break
+        if old_rank != dog.rank:
+            print(f"{dog.name} ranked up to {dog.rank}!")
+            return True
+        return False
