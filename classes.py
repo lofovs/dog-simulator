@@ -1,5 +1,5 @@
 import json
-import colorama
+from colorama import Fore, init
 import os
 import time
 
@@ -23,12 +23,12 @@ class Dog:
 
     def kill(self):
         print(f"\n{self.name} has passed away... Goodbye, old friend.")
-        self.energy = 0
-        self.is_hungry = False
-
         if os.path.exists(f"saves/{self.name}_data.json"):
             Dog.delete_saved_file(f"saves/{self.name}_data.json")
         print(f"Goodbye {self.name}!")
+        time.sleep(5)
+        print(Fore.RED + "You are a monster." + Fore.WHITE)
+        time.sleep(1)
         exit()
 
 
@@ -61,9 +61,17 @@ class Dog:
             print(f"\n{self.name} is too energetic to sleep!")
         else:
             print(f"\n{self.name} is sleeping...")
-            time.sleep(3)
+            time.sleep(10)
             print("Zzzzz...")
-            time.sleep(2)
+            time.sleep(10)
+            print("Zzzzzzzzzzzzzzzzzzzzzzzzzz...")
+            time.sleep(10)
+            print("Zzzzzzzzzzzzzzzzzzzzzzzzzzzzz...")
+            time.sleep(10)
+            print("Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz...")
+            time.sleep(10)
+            print("Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz...")
+            time.sleep(10)
             print(f"\n{self.name} has awakened!")
             old_energy = self.energy
             self.energy = 100
@@ -157,3 +165,32 @@ class Dog:
         with open(f"saves/{self.name}_data.json", "w") as file:
             json.dump(self.to_dict(), file)
         print(f"{self.name}'s data has been saved to saves/{self.name}_data.json!")
+
+
+
+
+
+
+class GameManager:
+    def __init__(self):
+        self.last_drain_time = time.time()
+
+
+    def check_passive_drain(self, dog):
+        current_time = time.time()
+        time_passed = current_time - self.last_drain_time
+    
+        if time_passed >= 60:
+            minutes_passed = int(time_passed // 60)
+            energy_to_drain = minutes_passed * 5
+            dog.energy -= energy_to_drain
+        
+        
+            if dog.energy < 0:
+                dog.energy = 0
+                print(f"{dog.name} is completely exhausted!") 
+        
+            if dog.energy <= 50:
+                dog.is_hungry = True
+        
+        self.last_drain_time = current_time
