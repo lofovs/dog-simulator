@@ -67,7 +67,7 @@ def menu(my_dog, game_manager):
 /   (_____/
 /_____/   U
 """)
-        print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry}")
+        print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {my_dog.rank} | XP: {my_dog.xp}")
         print("<------------->")
         print("1. More info")
         print("2. Bark")
@@ -81,6 +81,7 @@ def menu(my_dog, game_manager):
         print("<------------->")
         choice = input("Choose an option: ")
         if choice == "1":
+            clear_screen()
             with open('ascii/info.txt', 'r') as file:
                 content = file.read()
                 print(content)
@@ -94,29 +95,41 @@ def menu(my_dog, game_manager):
             with open('ascii/bark.txt', 'r') as file:
                 content = file.read()
                 print(content)
-            my_dog.bark()
+            success = my_dog.bark()
+            if success:
+                game_manager.check_rank_up(my_dog)
         elif choice == "3":
             clear_screen()
             with open('ascii/sleep.txt', 'r') as file:
                 content = file.read()
                 print(content)
-            my_dog.sleep()
+            success = my_dog.sleep()
+            if success:
+                game_manager.check_rank_up(my_dog)
         elif choice == "4":
             clear_screen()
             with open('ascii/eat.txt', 'r') as file:
                 content = file.read()
                 print(content)
-            my_dog.eat()
+            success = my_dog.eat()
+            if success:
+                game_manager.check_rank_up(my_dog)
         elif choice == "5":
             clear_screen()
             with open('ascii/play.txt', 'r') as file:
                 content = file.read()
                 print(content)
-            my_dog.play()
+            success = my_dog.play()
+            if success:
+                game_manager.check_rank_up(my_dog)
         elif choice == "6":
-            my_dog.kick()
+            success = my_dog.kick()
+            if success:
+                game_manager.check_rank_up(my_dog)
         elif choice == "7":
-            my_dog.have_birthday()
+            success = my_dog.have_birthday()
+            if success:
+                game_manager.check_rank_up(my_dog)
         elif choice == "8":
             confirm = input(f"Are you sure you want to kill {my_dog.name}? This action cannot be undone. (y/n): ")
             if confirm.lower() == 'yes' or confirm.lower() == 'y':
