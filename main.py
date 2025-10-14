@@ -1,7 +1,8 @@
 import json
 import os
 import time
-from classes import Dog
+from colorama import Fore, init
+from classes import Dog, GameManager
 
 
 def clear_screen():
@@ -52,12 +53,13 @@ def startup_menu():
     return None
 
 
-def menu(my_dog):
+def menu(my_dog, game_manager):
     if my_dog is None:
         return
 
     while True:
         clear_screen()
+        game_manager.check_passive_drain(my_dog)
         print(""" 
   / \\__
  (    @\\____
@@ -133,7 +135,7 @@ def menu(my_dog):
         input("\nPress enter to continue...")
 
 
-
+game_manager = GameManager()
 my_dog = startup_menu()
 if my_dog:
-    menu(my_dog)
+    menu(my_dog, game_manager)
