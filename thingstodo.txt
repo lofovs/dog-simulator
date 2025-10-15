@@ -1,2 +1,6 @@
 Take all actions (eat,sleep, etc) into a parent category: Actions.
-Add shop
+Add shop, and values to each item (more energy to the dog, etc)
+Add inventory, probably use json for saving inventory
+Change xp threshold
+Add "how much xp needed to rankup"
+What should dogs do to earn money, and how much should they get?
