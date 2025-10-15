@@ -2,6 +2,14 @@ import json
 from colorama import Fore, init
 import os
 import time
+import requests
+import webbrowser
+
+def clear_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 class Dog:
     def __init__(self, name, breed, age):
@@ -234,3 +242,52 @@ class GameManager:
             print(f"{dog.name} ranked up to {dog.rank}!")
             return True
         return False
+    
+
+
+
+
+class versionChecker:
+    def __init__(self):
+        self.current_version = "1.1.0"
+        self.version_url = "https://gist.githubusercontent.com/lofovs/9dcda456d4670589272f0e810c8b73ef/raw/1853c27233a1114762b66ec758d51e4310da1a19/version.json"
+
+    def fetch_latest_version(self):
+        try:
+            response = requests.get(self.version_url)
+            return response.json()
+        except:
+            return None
+        
+    def check_new_update(self):
+        data = self.fetch_latest_version()
+        print(f"DEBUG: Fetched data: {data}")  # ← Add this line
+        if data is None:
+            return False
+        latest = data["latest_version"]
+        current = self.current_version
+        print(f"DEBUG: Comparing {latest} > {current} = {latest > current}")  # ← Add this
+        if latest > current:
+            return True
+        else:
+            return False
+    
+    def prompt_for_update(self):
+        if self.check_new_update():
+            clear_screen()
+            print(Fore.YELLOW + "🎮 UPDATE AVAILABLE!" + Fore.WHITE)
+            print(f"Current: {self.current_version} → New: {self.fetch_latest_version()['latest_version']}")
+            print("\nWhat would you like to do?")
+            print("1. Download update now")
+            print("2. Continue playing (remind me later)")
+        
+            choice = input("\nChoose: ")
+            if choice == "1":
+                import webbrowser
+                webbrowser.open(self.fetch_latest_version()['download_url'])
+                print("\n📥 Update page opened in browser!")
+                print("💡 Replace all files in your Dog Simulator folder with the new ones.")
+                input("\nPress Enter to continue playing...")
+        else:
+        # ADD THIS PART FOR WHEN NO UPDATE IS AVAILABLE
+            print(Fore.GREEN + "✅ You're running the latest version!" + Fore.WHITE)

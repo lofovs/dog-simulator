@@ -2,7 +2,8 @@ import json
 import os
 import time
 from colorama import Fore, init
-from classes import Dog, GameManager
+from classes import Dog, GameManager, versionChecker
+
 
 def clear_screen():
     if os.name == 'nt':
@@ -10,12 +11,14 @@ def clear_screen():
     else:
         os.system('clear')
 
-def seniorDogMenu(my_dog, game_manager):
+def seniorDogMenu(my_dog, game_manager, version_checker):
     while True:
         if my_dog.rank != "Senior Dog":
             return
         clear_screen()
         game_manager.check_passive_drain(my_dog)
+        status = "🔴" if version_checker.check_new_update() else "✅"
+        print(f"Dog Simulator {version_checker.current_version} {status}")
         print(""" 
   / \\__
  (    @\\____
@@ -23,7 +26,7 @@ def seniorDogMenu(my_dog, game_manager):
 /   (_____/
 /_____/   U
 """)
-        print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank:{Fore.PURPLE} {my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
+        print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {Fore.GREEN}{my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
         print("<------------->")
         print("1. More info")
         print("2. Bark")
@@ -33,7 +36,8 @@ def seniorDogMenu(my_dog, game_manager):
         print("6. Kick Dog")
         print("7. Have Birthday")
         print("8. Kill Dog")
-        print("9. Save and quit")
+        print("9. Check for updates")
+        print("10. Save and quit")
         print("<------------->")
         choice = input("Choose an option: ")
         if choice == "1":
@@ -95,6 +99,9 @@ def seniorDogMenu(my_dog, game_manager):
             else:
                 print("Invalid command.")
         elif choice == "9":
+            version_checker = versionChecker()
+            version_checker.prompt_for_update()
+        elif choice == "10":
             my_dog.save_to_file()
             print("Goodbye.")
             time.sleep(3)

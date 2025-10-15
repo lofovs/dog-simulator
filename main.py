@@ -1,12 +1,15 @@
 import json
 import os
 import time
+import webbrowser
+import requests
 from colorama import Fore, init
-from classes import Dog, GameManager
+from classes import Dog, GameManager, versionChecker
 from menus.puppy_menu import puppymenu
 from menus.gooddog_menu import goodDogMenu
 from menus.seniordog_menu import seniorDogMenu
 from menus.grandmaster_menu import grandMasterMenu
+
 
 
 def clear_screen():
@@ -57,23 +60,25 @@ def startup_menu():
     return None
 
 
-def menu(my_dog, game_manager):
+def menu(my_dog, game_manager, version_checker):
+    
+    version_checker.prompt_for_update()
     if my_dog is None:
         return
     if my_dog.rank == "Puppy":
-        puppymenu(my_dog, game_manager)
+        puppymenu(my_dog, game_manager, version_checker)
     if my_dog.rank == "Good Dog":
-        goodDogMenu(my_dog, game_manager)
+        goodDogMenu(my_dog, game_manager, version_checker)
     if my_dog.rank == "Senior Dog":
-        seniorDogMenu(my_dog, game_manager)
+        seniorDogMenu(my_dog, game_manager, version_checker)
     if my_dog.rank == "Grand Master":
-        grandMasterMenu(my_dog, game_manager) 
+        grandMasterMenu(my_dog, game_manager, version_checker) 
 
 
 
 
-
+version_checker = versionChecker()
 game_manager = GameManager()
 my_dog = startup_menu()
 if my_dog:
-    menu(my_dog, game_manager)
+    menu(my_dog, game_manager, version_checker)
