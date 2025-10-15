@@ -293,5 +293,4 @@ class versionChecker:
                 print("💡 Replace all files in your Dog Simulator folder with the new ones.")
                 input("\nPress Enter to continue playing...")
         else:
-        # ADD THIS PART FOR WHEN NO UPDATE IS AVAILABLE
             print(Fore.GREEN + "✅ You're running the latest version!" + Fore.WHITE)
