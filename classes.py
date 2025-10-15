@@ -12,7 +12,7 @@ class Dog:
         self.is_hungry = False
         self.xp = 0
         self.rank = "Puppy"
-
+        self.money = 0
 
 
     def have_birthday(self):
@@ -156,6 +156,7 @@ class Dog:
         dog.is_hungry = data["is_hungry"]
         dog.xp = data["xp"]
         dog.rank = data["rank"]
+        dog.money = data["money"]
         print(f"{dog.name}'s data is loaded from {filename}")
         return dog
     
@@ -177,7 +178,8 @@ class Dog:
             "energy": self.energy,
             "is_hungry": self.is_hungry,
             "xp": self.xp,
-            "rank": self.rank
+            "rank": self.rank,
+            "money": self.money
         }
     
     def save_to_file(self):

@@ -10,9 +10,9 @@ def clear_screen():
     else:
         os.system('clear')
 
-def puppymenu(my_dog, game_manager):
+def goodDogMenu(my_dog, game_manager):
     while True:
-        if my_dog.rank != "Puppy":
+        if my_dog.rank != "Good Dog":
             return
         clear_screen()
         game_manager.check_passive_drain(my_dog)
@@ -23,7 +23,7 @@ def puppymenu(my_dog, game_manager):
 /   (_____/
 /_____/   U
 """)
-        print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank:{Fore.YELLOW} {my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
+        print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {Fore.GREEN}{my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
         print("<------------->")
         print("1. More info")
         print("2. Bark")
