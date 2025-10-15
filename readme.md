@@ -2,8 +2,8 @@
 
 A Python-based virtual pet simulator where you care for your own digital dog! Manage energy, hunger, and teach tricks while your dog's progress saves automatically.
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![Status](https://img.shields.io/badge/Status-Playing%20Now-green.svg)
+![Python](https://img.shields.io/badge/python-3.13+-blue.svg)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/lofovs/dog-simulator)
 
 ## 🎮 What's This Game About?
 
