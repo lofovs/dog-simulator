@@ -249,7 +249,9 @@ class GameManager:
 
 class versionChecker:
     def __init__(self):
-        self.current_version = "1.2.0"
+        with open("config/version.json", "r") as version_file:
+            version_data = json.load(version_file)
+        self.current_version = version_data.get("latest_version")
         self.version_url = "https://raw.githubusercontent.com/lofovs/dog-simulator/refs/heads/main/config/version.json"
         self.cached_data = None
         self.latest_changelog = ""
