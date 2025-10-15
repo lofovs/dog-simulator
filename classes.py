@@ -250,8 +250,9 @@ class GameManager:
 class versionChecker:
     def __init__(self):
         self.current_version = "1.1.0"
-        self.version_url = "https://gist.githubusercontent.com/lofovs/9dcda456d4670589272f0e810c8b73ef/raw/1853c27233a1114762b66ec758d51e4310da1a19/version.json"
-
+        self.version_url = "https://raw.githubusercontent.com/lofovs/dog-simulator/refs/heads/main/config/version.json"
+        self.cached_data = None
+        
     def fetch_latest_version(self):
         try:
             response = requests.get(self.version_url)
@@ -259,18 +260,18 @@ class versionChecker:
         except:
             return None
         
+    def refresh(self):
+        self.cached_data = None
+    
     def check_new_update(self):
         data = self.fetch_latest_version()
-        print(f"DEBUG: Fetched data: {data}")  # ← Add this line
         if data is None:
             return False
         latest = data["latest_version"]
         current = self.current_version
-        print(f"DEBUG: Comparing {latest} > {current} = {latest > current}")  # ← Add this
-        if latest > current:
-            return True
-        else:
-            return False
+        latest_tuple = tuple(map(int, latest.split('.')))
+        current_tuple = tuple(map(int, current.split('.')))
+        return latest_tuple > current_tuple
     
     def prompt_for_update(self):
         if self.check_new_update():
