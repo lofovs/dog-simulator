@@ -1,0 +1,2 @@
+Take all actions (eat,sleep, etc) into a parent category: Actions.
+Add shop

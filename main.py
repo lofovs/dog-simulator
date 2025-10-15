@@ -4,9 +4,9 @@ import time
 from colorama import Fore, init
 from classes import Dog, GameManager
 from menus.puppy_menu import puppymenu
-# from menus.gooddog_menu import goodDogMenu
-# from menus.seniordog_menu import seniorDogMenu
-# from menus.grandmaster_menu import grandMasterMenu
+from menus.gooddog_menu import goodDogMenu
+from menus.seniordog_menu import seniorDogMenu
+from menus.grandmaster_menu import grandMasterMenu
 
 
 def clear_screen():
@@ -63,13 +63,12 @@ def menu(my_dog, game_manager):
     if my_dog.rank == "Puppy":
         puppymenu(my_dog, game_manager)
     if my_dog.rank == "Good Dog":
-        puppymenu(my_dog, game_manager)
+        goodDogMenu(my_dog, game_manager)
     if my_dog.rank == "Senior Dog":
-        puppymenu(my_dog, game_manager)
+        seniorDogMenu(my_dog, game_manager)
     if my_dog.rank == "Grand Master":
-        puppymenu(my_dog, game_manager) 
+        grandMasterMenu(my_dog, game_manager) 
 
-#skift dei til riktig menu
 
 
 
