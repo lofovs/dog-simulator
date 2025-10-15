@@ -252,6 +252,7 @@ class versionChecker:
         self.current_version = "1.1.0"
         self.version_url = "https://raw.githubusercontent.com/lofovs/dog-simulator/refs/heads/main/config/version.json"
         self.cached_data = None
+        self.latest_changelog = ""
         
     def fetch_latest_version(self):
         try:
@@ -269,6 +270,7 @@ class versionChecker:
             return False
         latest = data["latest_version"]
         current = self.current_version
+        self.latest_changelog = data["changelog"]
         latest_tuple = tuple(map(int, latest.split('.')))
         current_tuple = tuple(map(int, current.split('.')))
         return latest_tuple > current_tuple
@@ -278,6 +280,7 @@ class versionChecker:
             clear_screen()
             print(Fore.YELLOW + "🎮 UPDATE AVAILABLE!" + Fore.WHITE)
             print(f"Current: {self.current_version} → New: {self.fetch_latest_version()['latest_version']}")
+            print(f"📝 Changes: {self.latest_changelog}")
             print("\nWhat would you like to do?")
             print("1. Download update now")
             print("2. Continue playing (remind me later)")
