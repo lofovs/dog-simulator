@@ -48,3 +48,8 @@ Daily challenges pulled from GitHub
 Leaderboards for top dogs
 
 Update checking for new versions
+
+
+
+
+add obfuscation!!!!
