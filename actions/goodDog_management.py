@@ -12,9 +12,9 @@ def clear_screen():
         os.system('clear')
 
 
-def puppy_manager(my_dog, game_manager, version_checker):
+def goodDog_manager(my_dog, game_manager, version_checker):
     while True:
-        if my_dog.rank != "Puppy":
+        if my_dog.rank != "Good Dog":
             print(f"🎉 {my_dog.name} is now a {my_dog.rank}!")
             time.sleep(2)
             return

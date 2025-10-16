@@ -12,9 +12,9 @@ def clear_screen():
         os.system('clear')
 
 
-def puppy_manager(my_dog, game_manager, version_checker):
+def grandMaster_manager(my_dog, game_manager, version_checker):
     while True:
-        if my_dog.rank != "Puppy":
+        if my_dog.rank != "Grand Master":
             print(f"🎉 {my_dog.name} is now a {my_dog.rank}!")
             time.sleep(2)
             return
@@ -27,7 +27,7 @@ def puppy_manager(my_dog, game_manager, version_checker):
         print(f"Dog Simulator {version_checker.current_version} {status}")
         print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {Fore.GREEN}{my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
         print("________________________________")
-        print("|                              |")
+        print("|     grand master menu        |")
         print("|  1. Bark                     |")
         print("|  2. Play                     |")
         print("|  3. Eat                      |")

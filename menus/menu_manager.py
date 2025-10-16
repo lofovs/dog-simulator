@@ -4,6 +4,10 @@ import time
 from colorama import Fore, init
 from classes import Dog, GameManager, versionChecker
 from actions.puppy_management import puppy_manager
+from actions.goodDog_management import goodDog_manager
+from actions.seniorDog_management import seniorDog_manager
+from actions.grandMaster_management import grandMaster_manager
+
 
 def clear_screen():
     if os.name == 'nt':
@@ -56,6 +60,7 @@ def menu_management(my_dog, game_manager, version_checker):
             print(f"Energy: {my_dog.energy}")
             print(f"Hungry: {my_dog.is_hungry}")
             input("\nPress enter to continue")
+            #add ranks, xp etc here
 
         elif choice == "2":
             clear_screen()
@@ -70,12 +75,12 @@ def menu_management(my_dog, game_manager, version_checker):
         elif choice == "4":
             if my_dog.rank == "Puppy":
                 puppy_manager(my_dog, game_manager, version_checker)
-      #      if my_dog.rank == "Good Dog":
-      #          goodDog_manager(my_dog, game_manager, version_checker)
-       #     if my_dog.rank == "Senior Dog":
-        #        seniorDog_manager(my_dog, game_manager, version_checker)
-         #   if my_dog.rank == "grandMaster":
-          #      grandMaster_manager(my_dog, game_manager, version_checker)
+            if my_dog.rank == "Good Dog":
+                goodDog_manager(my_dog, game_manager, version_checker)
+            if my_dog.rank == "Senior Dog":
+                seniorDog_manager(my_dog, game_manager, version_checker)
+            if my_dog.rank == "grandMaster":
+                grandMaster_manager(my_dog, game_manager, version_checker)
 
         
         elif choice == "9":
