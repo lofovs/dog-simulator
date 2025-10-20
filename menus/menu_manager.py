@@ -14,6 +14,12 @@ def clear_screen():
     else:
         os.system('clear')
 
+
+
+
+
+
+
 def menu_management(my_dog, game_manager, version_checker):
     version_checker.prompt_for_update()
     input("\nPress enter to continue..")
@@ -22,14 +28,37 @@ def menu_management(my_dog, game_manager, version_checker):
         game_manager.check_passive_drain(my_dog)
         status = "🔴" if version_checker.check_new_update() else "✅"
         print(f"Dog Simulator {version_checker.current_version} {status}")
-        #change to open a ascii text for each rank
-        print(""" 
-  / \\__
- (    @\\____
- /         O
-/   (_____/
-/_____/   U
-""")
+
+        if my_dog.rank == "Puppy":
+            with open('ascii/puppy.txt', 'r', encoding='utf-8') as file:
+                content = file.read()
+                colored_content = Fore.GREEN + content + Fore.WHITE
+                print(colored_content)
+                time.sleep(1)
+                clear_screen()
+
+        if my_dog.rank == "Good Dog":
+            with open('ascii/good_dog.txt', 'r', encoding='utf-8') as file:
+                content = file.read()
+                colored_content = Fore.GREEN + content + Fore.WHITE
+                print(colored_content)
+                time.sleep(1)
+                clear_screen()
+        if my_dog.rank == "Senior Dog":
+            with open('ascii/senior_dog.txt', 'r', encoding='utf-8') as file:
+                content = file.read()
+                colored_content = Fore.GREEN + content + Fore.WHITE
+                print(colored_content)
+
+        if my_dog.rank == "Grand Master":
+            with open('ascii/grand_master.txt', 'r', encoding='utf-8') as file:
+                content = file.read()
+                colored_content = Fore.GREEN + content + Fore.WHITE
+                print(colored_content)
+        with open('ascii/senior_dog.txt', 'r', encoding='utf-8') as file:
+                content = file.read()
+                colored_content = Fore.GREEN + content + Fore.WHITE
+                print(colored_content)
         print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {Fore.GREEN}{my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
         print("________________________________")
         print("|                              |")
