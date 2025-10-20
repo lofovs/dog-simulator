@@ -40,24 +40,24 @@ def menu_management(my_dog, game_manager, version_checker):
         if my_dog.rank == "Good Dog":
             with open('ascii/good_dog.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
-                colored_content = Fore.GREEN + content + Fore.WHITE
+                colored_content = Fore.BLUE + content + Fore.WHITE
                 print(colored_content)
                 time.sleep(1)
                 clear_screen()
         if my_dog.rank == "Senior Dog":
             with open('ascii/senior_dog.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
-                colored_content = Fore.GREEN + content + Fore.WHITE
+                colored_content = Fore.ORANGE + content + Fore.WHITE
                 print(colored_content)
 
         if my_dog.rank == "Grand Master":
             with open('ascii/grand_master.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
-                colored_content = Fore.GREEN + content + Fore.WHITE
+                colored_content = Fore.RED + content + Fore.WHITE
                 print(colored_content)
         with open('ascii/senior_dog.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
-                colored_content = Fore.GREEN + content + Fore.WHITE
+                colored_content = Fore.RED + content + Fore.WHITE
                 print(colored_content)
         print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {Fore.GREEN}{my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
         print("________________________________")
@@ -87,6 +87,9 @@ def menu_management(my_dog, game_manager, version_checker):
             print(f"Age: {my_dog.age}")
             print(f"Energy: {my_dog.energy}")
             print(f"Hungry: {my_dog.is_hungry}")
+            print(f"Rank: {my_dog.rank}")
+            print(f"XP: {my_dog.xp}")
+            print(f"Balance: {my_dog.money}")
             input("\nPress enter to continue")
             #add ranks, xp etc here
 
