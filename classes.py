@@ -89,12 +89,13 @@ class Dog:
             time.sleep(10)
             print("Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz...")
             time.sleep(10)
-            print(f"\n{self.name} has awakened!")
             old_energy = self.energy
             self.energy = 100
             self.is_hungry = False
-            print (f"\n{self.name} has slept and restores {100 - old_energy}!")
-            print(f"\n{self.name} has now awaken and rested with {self.energy} energy!")
+            with open('ascii/awaken_sleep.txt', 'r', encoding='utf-8') as file:
+                content = file.read()
+                print(content)
+            print (f"\n{self.name} has slept and restores {100 - old_energy} energy!")
             self.xp += 20
             return True
 
