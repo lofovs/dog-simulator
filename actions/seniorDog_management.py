@@ -1,6 +1,5 @@
-import json
-import os
 import time
+import os
 from colorama import Fore, init
 from classes import Dog, GameManager, versionChecker
 

@@ -3,7 +3,6 @@ from colorama import Fore, init
 import os
 import time
 import requests
-import webbrowser
 
 def clear_screen():
     if os.name == 'nt':
