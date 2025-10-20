@@ -2,13 +2,13 @@ import os
 from classes import Dog, GameManager, versionChecker
 from menus.menu_manager import menu_management
 
-
-
 def clear_screen():
     if os.name == 'nt':
         os.system('cls')
     else:
         os.system('clear')
+
+
 
 
 def startup_menu():
@@ -56,3 +56,6 @@ game_manager = GameManager()
 my_dog = startup_menu()
 if my_dog:
     menu_management(my_dog, game_manager, version_checker)
+
+
+
