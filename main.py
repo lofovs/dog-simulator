@@ -1,9 +1,4 @@
-import json
 import os
-import time
-import webbrowser
-import requests
-from colorama import Fore, init
 from classes import Dog, GameManager, versionChecker
 from menus.menu_manager import menu_management
 
