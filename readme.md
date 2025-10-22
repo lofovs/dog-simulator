@@ -44,21 +44,23 @@ A Python-based virtual pet simulator where you care for your own digital dog! Ma
 
 | Feature | Description | Version |
 |---------|-------------|---------|
-| 💤 **Enhanced Sleep** | Visual sleep progression with energy restoration | 1.1 |
-| 🥳 **Birthday System** | Age progression with celebration | 1.1 |
-| 🦶 **Kick Action** | Controversial but included interaction | 1.1 |
-| 🔐 **Unique Names** | Prevent duplicate dog names | 1.1 |
+| 🛍️ **Shop System** | Spend money on items and upgrades | 2.0 |
+| 🎒 **Inventory** | Track owned items and equipment | 2.0 |
 | ⚡ **Passive Energy Drain** | Real-time energy depletion | 1.2 |
 | 💰 **Money System** | Basic economy foundation | 1.2 |
 | 🔄 **Auto-Updates** | GitHub-based version checking | 1.2 |
 | 🏆 **Rank System** | XP-based progression through 4 ranks | 1.2 |
+| 💤 **Enhanced Sleep** | Visual sleep progression with energy restoration | 1.1 |
+| 🥳 **Birthday System** | Age progression with celebration | 1.1 |
+| 🦶 **Kick Action** | Controversial but included interaction | 1.1 |
+| 🔐 **Unique Names** | Prevent duplicate dog names | 1.1 |
+
+
 
 ## 🎯 Coming Next
 
 | Feature | Status | Description |
 |---------|--------|-------------|
-| 🛍️ **Shop System** | Planning | Spend money on items and upgrades |
-| 🎒 **Inventory** | Planning | Track owned items and equipment |
 | 📊 **XP Display** | Planning | Show progress to next rank |
 | 🎪 **Trick System** | Ideas | Unlockable special actions |
 | 🔐 **Save Encryption** | Future | Obfuscated save files |
