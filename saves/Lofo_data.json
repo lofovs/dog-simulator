@@ -1,1 +1,1 @@
-{"name": "Lofo", "breed": "Bichon", "age": 4, "energy": 85, "is_hungry": false, "xp": 380, "rank": "Good Dog", "money": 0}
+{"name": "Lofo", "breed": "Bichon", "age": 4, "energy": 60, "is_hungry": false, "xp": 470, "rank": "Senior Dog", "money": 126, "inventory": ["golden_collar"], "equipped": ["golden_collar"]}
