@@ -11,7 +11,6 @@ def inventory_menu(my_dog, game_manager):
             print("Your inventory is empty!")
             print("Visit the shop to buy some items!")
         else:
-            # Show owned items
             for i, item_id in enumerate(my_dog.inventory, 1):
                 item = SHOP_ITEMS[item_id]
                 equipped = "⚡" if item_id in my_dog.equipped else " "

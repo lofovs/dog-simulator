@@ -8,7 +8,7 @@ def shop_menu(my_dog, game_manager):
         print(f"Money: ${my_dog.money}")
         print("=" * 50)
         
-        # Display items for sale
+        
         items_list = list(SHOP_ITEMS.items())
         for i, (item_id, item) in enumerate(items_list, 1):
             owned = "✅" if item_id in my_dog.inventory else " "
@@ -24,7 +24,6 @@ def shop_menu(my_dog, game_manager):
         if choice.isdigit():
             choice_num = int(choice)
             if 1 <= choice_num <= len(items_list):
-                # Get the selected item
                 item_id, item = items_list[choice_num - 1]
                 
                 if item_id in my_dog.inventory:
