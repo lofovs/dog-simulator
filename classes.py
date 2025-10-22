@@ -254,7 +254,7 @@ class GameManager:
         self.rank_thresholds = {
             "Puppy": 0,
             "Good Dog": 150,
-            "Senior Dog": 400,
+            "Senior Dog": 600,
             "Grand Master": 1000
         }
 
