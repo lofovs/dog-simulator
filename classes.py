@@ -107,6 +107,8 @@ class Dog:
         if self.energy > 100: 
             self.energy = 100
         self.is_hungry = False
+        print(f"{self.name} is eating!...")
+        time.sleep(10)
         print(f"\n{self.name} ate a meal and restored 25 energy!")
         self.xp += 10
         return True

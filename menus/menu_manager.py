@@ -91,7 +91,6 @@ def menu_management(my_dog, game_manager, version_checker):
             print(f"XP: {my_dog.xp}")
             print(f"Balance: {my_dog.money}")
             input("\nPress enter to continue")
-            #add ranks, xp etc here
 
         elif choice == "2":
             clear_screen()
