@@ -2,13 +2,7 @@ import time
 import os
 from colorama import Fore, init
 from classes import Dog, GameManager, versionChecker
-
-
-def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
+from utils.display_utils import clear_screen
 
 
 def goodDog_manager(my_dog, game_manager, version_checker):

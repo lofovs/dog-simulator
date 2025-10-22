@@ -1,14 +1,7 @@
 import os
 from classes import Dog, GameManager, versionChecker
 from menus.menu_manager import menu_management
-
-def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
-
-
+from utils.display_utils import clear_screen
 
 
 def startup_menu():

@@ -6,14 +6,9 @@ from actions.puppy_management import puppy_manager
 from actions.goodDog_management import goodDog_manager
 from actions.seniorDog_management import seniorDog_manager
 from actions.grandMaster_management import grandMaster_manager
-
-
-def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
-
+from menus.shop_menu import shop_menu
+from menus.inventory_menu import inventory_menu
+from utils.display_utils import clear_screen
 
 
 
@@ -47,14 +42,18 @@ def menu_management(my_dog, game_manager, version_checker):
         if my_dog.rank == "Senior Dog":
             with open('ascii/senior_dog.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
-                colored_content = Fore.ORANGE + content + Fore.WHITE
+                colored_content = Fore.LIGHTBLUE_EX + content + Fore.WHITE
                 print(colored_content)
+                time.sleep(1)
+                clear_screen()
 
         if my_dog.rank == "Grand Master":
             with open('ascii/grand_master.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
                 colored_content = Fore.RED + content + Fore.WHITE
                 print(colored_content)
+                time.sleep(1)
+                clear_screen()
         with open('ascii/senior_dog.txt', 'r', encoding='utf-8') as file:
                 content = file.read()
                 colored_content = Fore.RED + content + Fore.WHITE
@@ -94,13 +93,11 @@ def menu_management(my_dog, game_manager, version_checker):
 
         elif choice == "2":
             clear_screen()
-            #shop_menu()
-            input("\nPress enter to continue")
+            shop_menu(my_dog, game_manager)
         
         elif choice == "3":
             clear_screen()
-            #inventory()
-            input("\nPress enter to continue")
+            inventory_menu(my_dog, game_manager)
 
         elif choice == "4":
             if my_dog.rank == "Puppy":

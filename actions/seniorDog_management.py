@@ -2,13 +2,7 @@ import time
 import os
 from colorama import Fore, init
 from classes import Dog, GameManager, versionChecker
-
-
-def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
+from utils.display_utils import clear_screen
 
 
 def seniorDog_manager(my_dog, game_manager, version_checker):
@@ -26,7 +20,7 @@ def seniorDog_manager(my_dog, game_manager, version_checker):
         print(f"Dog Simulator {version_checker.current_version} {status}")
         print(f"{my_dog.name} | Energy: {my_dog.energy} | Hungry: {my_dog.is_hungry} | Rank: {Fore.GREEN}{my_dog.rank}{Fore.WHITE} | XP: {my_dog.xp} | $: {my_dog.money}") 
         print("________________________________")
-        print("|      senior dog              |")
+        print("|                              |")
         print("|  1. Bark                     |")
         print("|  2. Play                     |")
         print("|  3. Eat                      |")

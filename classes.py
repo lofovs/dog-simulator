@@ -3,12 +3,8 @@ from colorama import Fore, init
 import os
 import time
 import requests
+from utils.display_utils import clear_screen
 
-def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
 
 class Dog:
     def __init__(self, name, breed, age):
@@ -20,12 +16,19 @@ class Dog:
         self.xp = 0
         self.rank = "Puppy"
         self.money = 0
+        self.inventory = []
+        self.equipped = {}
+        self.xp_multiplier = 1.0
 
 
     def have_birthday(self):
         age = int(self.age)
         age += 1
         self.age = age
+        base_xp = 100
+        xp_earned = int(base_xp * self.xp_multiplier)
+        self.xp += xp_earned
+        self.money += 100
         print(f"\n{self.name} is now {self.age} years old! Happy Birthday!")
 
 
@@ -49,7 +52,10 @@ class Dog:
             print(f"{self.name} is hurt and now has {self.energy} energy left.")
             if self.energy <= 50:
                 self.is_hungry = True
-            self.xp += 5
+            base_xp = 5
+            xp_earned = int(base_xp * self.xp_multiplier)
+            self.xp += xp_earned
+            self.money += 3 
             return True
         else:
             print(f"{self.name} is too tired to react.")
@@ -60,10 +66,13 @@ class Dog:
     def bark(self):
         if self.energy >= 10:
             self.energy -= 10
-            print(f"\n{self.name} says Woof!, and has now {self.energy} energy left.")
+            base_xp = 10
+            xp_earned = int(base_xp * self.xp_multiplier)
+            self.xp += xp_earned
+            self.money += 5 
+            print(f"\n{self.name} says Woof! +{xp_earned} XP, +$5")
             if self.energy <= 50:
                 self.is_hungry = True
-            self.xp += 10
             return True
         else:
             print(f"\n{self.name} is too tired to bark.")
@@ -95,7 +104,10 @@ class Dog:
                 content = file.read()
                 print(content)
             print (f"\n{self.name} has slept and restores {100 - old_energy} energy!")
-            self.xp += 20
+            base_xp = 20
+            xp_earned = int(base_xp * self.xp_multiplier)
+            self.xp += xp_earned
+            self.money += 20 
             return True
 
 
@@ -110,7 +122,10 @@ class Dog:
         print(f"{self.name} is eating!...")
         time.sleep(10)
         print(f"\n{self.name} ate a meal and restored 25 energy!")
-        self.xp += 10
+        base_xp = 10
+        xp_earned = int(base_xp * self.xp_multiplier)
+        self.xp += xp_earned
+        self.money += 8 
         return True
      else:
         print(f"\n{self.name} is too full to eat right now.")
@@ -120,21 +135,44 @@ class Dog:
     def play(self):
         if self.energy >= 30 and self.is_hungry == False:
             self.energy -= 30
-            print(f"\n{self.name} is playing! and now has {self.energy} energy left.")
+            base_xp = 15
+            xp_earned = int(base_xp * self.xp_multiplier)
+            self.xp += xp_earned
+            self.money += 8 
+            print(f"\n{self.name} is playing! +{xp_earned} XP, +$8")
             if self.energy <= 50:
                 self.is_hungry = True
-            self.xp += 15
             return True
         else:
-            if self.energy <= 30:
+            if self.energy < 30:
                 print(f"\n{self.name} is too tired to play...")
-                return False
             elif self.is_hungry:
                 print(f"\n{self.name} is too hungry to play.")
-                return False
+            return False
+        
+    def add_item(self, item_id):
+        if item_id in SHOP_ITEMS and item_id not in self.inventory:
+            self.inventory.append(item_id)
+            return True
+        return False
 
-
-
+    def equip_item(self, item_id):
+        if item_id in self.inventory and item_id not in self.equipped:
+            item = SHOP_ITEMS[item_id]
+            if "xp_multiplier" in item.effect:
+                self.xp_multiplier = item.effect["xp_multiplier"]
+            self.equipped[item_id] = item
+            return True
+        return False
+    
+    def unequip_item(self, item_id):
+        if item_id in self.equipped:
+            if "xp_multiplier" in self.equipped[item_id].effect:
+                self.xp_multiplier = 1.0
+            del self.equipped[item_id]
+            return True
+        return False
+    
     @classmethod
     def get_all_saved_dogs(cls):
         if not os.path.exists("saves"):
@@ -167,6 +205,10 @@ class Dog:
         dog.xp = data["xp"]
         dog.rank = data["rank"]
         dog.money = data["money"]
+        dog.inventory = data.get("inventory", [])
+        equipped_ids = data.get("equipped", [])
+        for item_id in equipped_ids:
+            dog.equip_item(item_id)
         print(f"{dog.name}'s data is loaded from {filename}")
         return dog
     
@@ -189,7 +231,9 @@ class Dog:
             "is_hungry": self.is_hungry,
             "xp": self.xp,
             "rank": self.rank,
-            "money": self.money
+            "money": self.money,
+            "inventory": self.inventory,
+            "equipped": list(self.equipped.keys())
         }
     
     def save_to_file(self):
@@ -298,3 +342,47 @@ class versionChecker:
                 input("\nPress Enter to continue playing...")
         else:
             print(Fore.GREEN + "✅ You're running the latest version!" + Fore.WHITE)
+
+class Item:
+    def __init__(self, item_id, name, item_type, cost, effect, description):
+        self.id = item_id
+        self.name = name
+        self.type = item_type
+        self.cost = cost
+        self.effect = effect
+        self.description = description
+
+SHOP_ITEMS = {
+    "golden_collar": Item(
+        "golden_collar", 
+        "Golden Collar", 
+        "collar", 
+        100, 
+        {"xp_multiplier": 2.0},
+        "Double XP from all actions!"
+    ),
+    "energy_drink": Item(
+        "energy_drink", 
+        "Energy Drink", 
+        "consumable", 
+        25, 
+        {"energy_boost": 30},
+        "Instantly restore 30 energy"
+    ),
+    "lucky_toy": Item(
+        "lucky_toy", 
+        "Lucky Toy", 
+        "toy", 
+        75, 
+        {"money_multiplier": 1.5},
+        "Earn 50% more money from actions"
+    ),
+    "fancy_hat": Item(
+        "fancy_hat", 
+        "Fancy Hat", 
+        "accessory", 
+        50, 
+        {"energy_max_boost": 20},
+        "Increase max energy by 20"
+    )
+}
