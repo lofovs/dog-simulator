@@ -52,13 +52,14 @@ A Python-based virtual pet simulator where you care for your own digital dog! Ma
 | 💰 **Money System** | Basic economy foundation | 1.2 |
 | 🔄 **Auto-Updates** | GitHub-based version checking | 1.2 |
 | 🏆 **Rank System** | XP-based progression through 4 ranks | 1.2 |
+| 🛍️ **Shop System** | Planning | Spend money on items and upgrades | 2.0 |
+| 🎒 **Inventory** | Planning | Track owned items and equipment | 2.0 |
 
 ## 🎯 Coming Next
 
 | Feature | Status | Description |
 |---------|--------|-------------|
-| 🛍️ **Shop System** | Planning | Spend money on items and upgrades |
-| 🎒 **Inventory** | Planning | Track owned items and equipment |
+
 | 📊 **XP Display** | Planning | Show progress to next rank |
 | 🎪 **Trick System** | Ideas | Unlockable special actions |
 | 🔐 **Save Encryption** | Future | Obfuscated save files |
